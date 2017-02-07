@@ -19,3 +19,6 @@ class Token:
     def __init__(self, lexeme, tCode):
         self.lexeme = lexeme
         self.tCode = tCode
+
+    def __str__(self):
+        return "Token({}, {})".format(self.lexeme, self.tCode)
