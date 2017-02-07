@@ -27,11 +27,6 @@ class Interpreter :
     def pop_two(self):
         return (self.pop(), self.pop())
 
-    def look(self):
-        if len(self.stack) == 0:
-            raise ValueError
-        return self.stack[-1]
-
     def push(self, x):
         if self.is_int(x):
             self.stack.append(int(x))
@@ -39,7 +34,7 @@ class Interpreter :
             self.stack.append(x)
 
     def print(self):
-        x = self.look()
+        x = self.pop()
         x = self.get_ident_value(x)
         print(x)
 
@@ -84,6 +79,8 @@ class Interpreter :
                     self.assign()
                 elif line[0] == "PRINT":
                     self.print()
+                else:
+                    raise ValueError
             except ValueError:
                 print("Error for operator", line[0])
                 exit(1)
