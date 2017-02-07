@@ -1,3 +1,4 @@
-var i = 3;
-print i;
+var = 3;
+b = 4 * (7-var);
+print b;
 end

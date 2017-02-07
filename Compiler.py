@@ -3,7 +3,7 @@ from Token import Token, TokenCode
 
 class Compiler:
     def __init__(self):
-        l = Lexer()
+        l = ""
         t = l.nextToken()
         while t.tCode != TokenCode.END:
             print(t)
