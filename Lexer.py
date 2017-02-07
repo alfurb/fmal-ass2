@@ -1,11 +1,11 @@
 from Token import Token, TokenCode
 import sys
-
 class Lexer:
     inp = ""
     pos = 0
     def __init__(self):
         self.inp = sys.stdin.read()
+        self.pos = 0
 
     def nextToken(self):
         next_c = self.inp[self.pos]
@@ -15,8 +15,10 @@ class Lexer:
             next_c = self.inp[self.pos]
 
         if next_c.isalpha():
+            #print("lexer: found id")
             return self._process_id()
         elif next_c.isdigit():
+            #print("lexer: found int")
             return self._process_int()
         elif next_c == "+":
             ret = Token(next_c, TokenCode.ADD)
@@ -35,6 +37,7 @@ class Lexer:
         else:
             ret = Token("", TokenCode.ERROR)
         self.pos += 1
+        #print("lexer: found {} with lexeme {}".format(ret.tCode, ret.lexeme))
         return ret
 
     def _process_id(self):
